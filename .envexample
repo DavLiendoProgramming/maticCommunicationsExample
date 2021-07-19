@@ -1,0 +1,3 @@
+#Private key preceded by a 0x for matic
+PRIVATE_KEY=0x
+MAIN_ADDRESS=
