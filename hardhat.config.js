@@ -4,6 +4,7 @@
 require('dotenv').config();
 require('@nomiclabs/hardhat-waffle');
 require('@nomiclabs/hardhat-truffle5');
+require('@nomiclabs/hardhat-etherscan');
 
 /**
  * Import private key of the account with funds
@@ -56,5 +57,11 @@ module.exports = {
   },
   mocha: {
     timeout: 20000,
+  },
+  /**
+   * Using hardhat-etherscan plugin for veryfying introduce key for polygon or eth nets
+   */
+  etherscan: {
+    apiKey: process.env.ETHERSCAN_KEY,
   },
 };
