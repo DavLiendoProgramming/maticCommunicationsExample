@@ -3,7 +3,6 @@
 pragma solidity ^0.8.0;
 
 import "./ERC721Tradeable.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
 
 /**
  * @title Creature

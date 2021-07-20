@@ -1,7 +1,8 @@
 // Sources flattened with hardhat v2.4.3 https://hardhat.org
 
 // File @openzeppelin/contracts/utils/introspection/IERC165.sol@v4.2.0
-//SPDX-License-Identifier: Unlicense
+
+// SPDX-License-Identifier: MIT
 
 pragma solidity ^0.8.0;
 
@@ -28,6 +29,7 @@ interface IERC165 {
 
 
 // File @openzeppelin/contracts/token/ERC721/IERC721.sol@v4.2.0
+
 
 pragma solidity ^0.8.0;
 
@@ -171,6 +173,7 @@ interface IERC721 is IERC165 {
 
 // File @openzeppelin/contracts/token/ERC721/IERC721Receiver.sol@v4.2.0
 
+
 pragma solidity ^0.8.0;
 
 /**
@@ -199,6 +202,7 @@ interface IERC721Receiver {
 
 // File @openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol@v4.2.0
 
+
 pragma solidity ^0.8.0;
 
 /**
@@ -224,6 +228,7 @@ interface IERC721Metadata is IERC721 {
 
 
 // File @openzeppelin/contracts/utils/Address.sol@v4.2.0
+
 
 pragma solidity ^0.8.0;
 
@@ -437,6 +442,7 @@ library Address {
 
 // File @openzeppelin/contracts/utils/Context.sol@v4.2.0
 
+
 pragma solidity ^0.8.0;
 
 /*
@@ -461,6 +467,7 @@ abstract contract Context {
 
 
 // File @openzeppelin/contracts/utils/Strings.sol@v4.2.0
+
 
 pragma solidity ^0.8.0;
 
@@ -530,6 +537,7 @@ library Strings {
 
 // File @openzeppelin/contracts/utils/introspection/ERC165.sol@v4.2.0
 
+
 pragma solidity ^0.8.0;
 
 /**
@@ -557,6 +565,7 @@ abstract contract ERC165 is IERC165 {
 
 
 // File @openzeppelin/contracts/token/ERC721/ERC721.sol@v4.2.0
+
 
 pragma solidity ^0.8.0;
 
@@ -969,6 +978,7 @@ contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
 
 // File @openzeppelin/contracts/token/ERC721/extensions/IERC721Enumerable.sol@v4.2.0
 
+
 pragma solidity ^0.8.0;
 
 /**
@@ -996,6 +1006,7 @@ interface IERC721Enumerable is IERC721 {
 
 
 // File @openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol@v4.2.0
+
 
 pragma solidity ^0.8.0;
 
@@ -1159,6 +1170,7 @@ abstract contract ERC721Enumerable is ERC721, IERC721Enumerable {
 
 // File @openzeppelin/contracts/access/Ownable.sol@v4.2.0
 
+
 pragma solidity ^0.8.0;
 
 /**
@@ -1229,6 +1241,7 @@ abstract contract Ownable is Context {
 
 
 // File @openzeppelin/contracts/utils/math/SafeMath.sol@v4.2.0
+
 
 pragma solidity ^0.8.0;
 
@@ -1458,6 +1471,7 @@ library SafeMath {
 
 // File contracts/common/meta-transactions/ContentMixin.sol
 
+
 pragma solidity ^0.8.0;
 
 abstract contract ContextMixin {
@@ -1486,6 +1500,7 @@ abstract contract ContextMixin {
 
 // File contracts/common/meta-transactions/Initializable.sol
 
+
 pragma solidity ^0.8.0;
 
 contract Initializable {
@@ -1500,6 +1515,7 @@ contract Initializable {
 
 
 // File contracts/common/meta-transactions/EIP712Base.sol
+
 
 pragma solidity ^0.8.0;
 
@@ -1577,6 +1593,7 @@ contract EIP712Base is Initializable {
 
 
 // File contracts/common/meta-transactions/NativeMetaTransaction.sol
+
 
 pragma solidity ^0.8.0;
 
@@ -1684,8 +1701,8 @@ contract NativeMetaTransaction is EIP712Base {
 
 // File contracts/ERC721Tradeable.sol
 
-pragma solidity ^0.8.0;
 
+pragma solidity ^0.8.0;
 
 
 
@@ -1782,8 +1799,8 @@ abstract contract ERC721Tradeable is ContextMixin, ERC721Enumerable, NativeMetaT
 
 // File contracts/Creature3.sol
 
-pragma solidity ^0.8.0;
 
+pragma solidity ^0.8.0;
 
 /**
  * @title Creature
