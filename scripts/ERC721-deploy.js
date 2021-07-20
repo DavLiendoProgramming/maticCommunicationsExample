@@ -6,7 +6,7 @@ const hre = require('hardhat');
 const openseaProxy = '0x58807baD0B376efc12F5AD86aAc70E78ed67deaE';
 async function main() {
   // We get the contract to deploy
-  const Creature3 = await hre.ethers.getContractFactory('Creature3');
+  const Creature3 = await hre.ethers.getContractFactory('FlatCreature3');
   const creature3 = await Creature3.deploy(
     '0x3166fAF2D5c1669872e09065De614d3b98090E8f'
   );
