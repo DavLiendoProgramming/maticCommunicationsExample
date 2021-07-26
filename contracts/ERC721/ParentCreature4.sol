@@ -16,7 +16,7 @@ contract ParentCreature4 is ERC721Tradeable, AccessControlMixin {
     bytes32 public constant PREDICATE_ROLE = keccak256("PREDICATE_ROLE");
 
     constructor(address _proxyRegistryAddress)
-        ERC721Tradeable("DCreature4", "DOSC4", _proxyRegistryAddress)
+        ERC721Tradeable("DCreature4", "DLC4", _proxyRegistryAddress)
     {
         _setupRole(DEFAULT_ADMIN_ROLE, _msgSender());
         _setupRole(PREDICATE_ROLE, 0x56E14C4C1748a818a5564D33cF774c59EB3eDF59);

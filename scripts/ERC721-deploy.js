@@ -15,7 +15,7 @@ async function main() {
 
   await childcreature4.deployed();
 
-  console.log('Sample ERC712 token deployed to:', childcreature4.address);
+  console.log('Sample ERC721 token deployed to:', childcreature4.address);
 }
 
 // We recommend this pattern to be able to use async/await everywhere

@@ -5,7 +5,7 @@ async function main() {
   /**
    * Contract factory
    */
-  const NFT = await hre.ethers.getContractFactory('FlatChildCreature4');
+  const NFT = await hre.ethers.getContractFactory('ChildMinteableERC721.sol');
   // const URI = 'something';
 
   /**
@@ -22,7 +22,7 @@ async function main() {
   /**
    * Minting a new NFT
    */
-  const txResult = await contract.mintTo(WALLET_ADDRESS);
+  const txResult = await contract.mint(WALLET_ADDRESS);
   console.log('Tx1 Result:', txResult);
   const txResult2 = await contract.owner();
   console.log('Tx2 Result:', txResult2);

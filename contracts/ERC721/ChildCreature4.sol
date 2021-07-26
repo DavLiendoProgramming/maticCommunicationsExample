@@ -16,7 +16,7 @@ contract ChildCreature4 is ERC721Tradeable,AccessControlMixin {
     uint256 private _currentTokenId = 0;
 
     constructor(address _proxyRegistryAddress)
-        ERC721Tradeable("DCreature4", "DOSC4", _proxyRegistryAddress)
+        ERC721Tradeable("DCreature4", "DLC4", _proxyRegistryAddress)
     {
         /**
         * Setting up permissions for admin role and ChildchainManager proxy 
@@ -66,11 +66,6 @@ contract ChildCreature4 is ERC721Tradeable,AccessControlMixin {
         external
         only(DEPOSITOR_ROLE)
     {
-        /**
-        * Making contract only callable by ChildChainManager
-        */
-        require(msg.sender == 0x2e5e27d50EFa501D90Ad3638ff8441a0C0C0d75e);
-
         // deposit single
         if (depositData.length == 32) {
             uint256 tokenId = abi.decode(depositData, (uint256));

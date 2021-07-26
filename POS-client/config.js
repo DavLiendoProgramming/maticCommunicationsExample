@@ -7,9 +7,9 @@ module.exports = {
     POSRootChainManager: '0xBbD7cBFA79faee899Eaf900F13C9065bF03B1A74',
     DERC20: '0x655F2166b0709cd575202630952D71E2bB0d61Af',
     /**
-     * Contract Address of the  ERC721 token
+     * Contract Address of the  ERC721 token inside Goerli
      */
-    DERC721: '0xa5b5396841A6a5fDd8965Bb063df4b5E2b2F9399',
+    DERC721: '0x5a3c29A5F8ed04E2FD22BEd25a4b353Ff28c96b8',
     /****************************************/
     /****************************************/
     /****************************************/
@@ -22,7 +22,13 @@ module.exports = {
   child: {
     RPC: 'https://rpc-mumbai.matic.today',
     DERC20: '0xfe4F5145f6e09952a5ba9e956ED0C25e3Fa4c7F1',
-    DERC721: '0x757b1BD7C12B81b52650463e7753d7f5D0565C0e',
+    /**
+     * Contract Address of the  ERC721 token inside Mumbai
+     */
+    DERC721: '0x671CE7356ED2DbCb33e31AA0a36CC5ff421B6c71',
+    /****************************************/
+    /****************************************/
+    /****************************************/
     DERC1155: '0xA07e45A987F19E25176c877d98388878622623FA',
     MaticWETH: '0x714550C2C1Ea08688607D86ed8EeF4f5E4F22323',
   },
@@ -34,7 +40,7 @@ module.exports = {
     /**
      * Select the token's Id for trading the ERC721
      */
-    tokenId: '3',
+    tokenId: '1',
     tokenId2: '6789',
   },
 };
