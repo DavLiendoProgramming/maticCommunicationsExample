@@ -39,26 +39,26 @@ abstract contract ERC721Tradeable is ContextMixin, ERC721Enumerable, NativeMetaT
      * @dev Mints a token to an address with a tokenURI.
      * @param _to address of the future owner of the token
      */
-    function mintTo(address _to) public onlyOwner {
-        uint256 newTokenId = _getNextTokenId();
-        _mint(_to, newTokenId);
-        _incrementTokenId();
-    }
+    // function mintTo(address _to) public onlyOwner {
+    //     uint256 newTokenId = _getNextTokenId();
+    //     _mint(_to, newTokenId);
+    //     _incrementTokenId();
+    // }
 
     /**
      * @dev calculates the next token ID based on value of _currentTokenId
      * @return uint256 for the next token ID
      */
-    function _getNextTokenId() private view returns (uint256) {
-        return _currentTokenId.add(1);
-    }
+    // function _getNextTokenId() virtual private view returns (uint256) {
+    //     return _currentTokenId.add(1);
+    // }
 
-    /**
-     * @dev increments the value of _currentTokenId
-     */
-    function _incrementTokenId() private {
-        _currentTokenId++;
-    }
+    // /**
+    //  * @dev increments the value of _currentTokenId
+    //  */
+    // function _incrementTokenId() virtual private {
+    //     _currentTokenId++;
+    // }
 
     function baseTokenURI() virtual public pure returns (string memory);
 

@@ -3,20 +3,40 @@
 pragma solidity ^0.8.0;
 
 import "./ERC721Tradeable.sol";
+import {AccessControlMixin} from "./common/AccessControlMixin.sol";
+import {AccessControl} from "@openzeppelin/contracts/access/AccessControl.sol";
 
 /**
  * @title Creature
  * Creature - a contract for my non-fungible creatures.
  */
-contract ChildCreature4 is ERC721Tradeable {
+contract ChildCreature4 is ERC721Tradeable,AccessControlMixin {
+    using SafeMath for uint256;
+    bytes32 public constant DEPOSITOR_ROLE = keccak256("DEPOSITOR_ROLE");
+    uint256 private _currentTokenId = 0;
+
     constructor(address _proxyRegistryAddress)
         ERC721Tradeable("DCreature4", "DOSC4", _proxyRegistryAddress)
-    {}
+    {
+        /**
+        * Setting up permissions for admin role and ChildchainManager proxy 
+        */
+        _setupRole(DEFAULT_ADMIN_ROLE, _msgSender());
+        _setupRole(DEPOSITOR_ROLE, 0xb5505a6d998549090530911180f38aC5130101c6);
+    }
     /**
      * Events for the burning 
      */
     event WithdrawnBatch(address indexed user, uint256[] tokenIds);
     event TransferWithMetadata(address indexed from, address indexed to, uint256 indexed tokenId, bytes metaData);
+
+        
+    /**
+     * @dev See {IERC165-supportsInterface}.
+     */
+    function supportsInterface(bytes4 interfaceId) public view virtual override(ERC721Enumerable, AccessControl) returns (bool) {
+        return interfaceId == type(ERC721Tradeable).interfaceId || super.supportsInterface(interfaceId);
+    }
 
     /**
      * @notice called when user wants to withdraw token back to root chain
@@ -44,6 +64,7 @@ contract ChildCreature4 is ERC721Tradeable {
      */
     function deposit(address user, bytes calldata depositData)
         external
+        only(DEPOSITOR_ROLE)
     {
         /**
         * Making contract only callable by ChildChainManager
@@ -67,7 +88,6 @@ contract ChildCreature4 is ERC721Tradeable {
         }
 
     }
-    bytes32 public constant DEPOSITOR_ROLE = keccak256("DEPOSITOR_ROLE");
 
     /**
     * Opensea URI's
@@ -128,6 +148,31 @@ contract ChildCreature4 is ERC721Tradeable {
         }
         
         return ERC721.isApprovedForAll(_owner, _operator);
+    }
+
+    /**
+     * @dev calculates the next token ID based on value of _currentTokenId
+     * @return uint256 for the next token ID
+     */
+    function _getNextTokenId() private view  returns (uint256) {
+        return _currentTokenId.add(1);
+    }
+
+    /**
+     * @dev increments the value of _currentTokenId
+     */
+    function _incrementTokenId() private {
+        _currentTokenId++;
+    }
+    
+    /**
+     * @dev Mints a token to an address with a tokenURI.
+     * @param _to address of the future owner of the token
+     */
+    function mintTo(address _to) public onlyOwner {
+        uint256 newTokenId = _getNextTokenId();
+        _mint(_to, newTokenId);
+        _incrementTokenId();
     }
 
 

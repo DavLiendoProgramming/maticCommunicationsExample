@@ -30,6 +30,7 @@ interface IERC165 {
 
 // File @openzeppelin/contracts/token/ERC721/IERC721.sol@v4.2.0
 
+
 pragma solidity ^0.8.0;
 
 /**
@@ -172,6 +173,7 @@ interface IERC721 is IERC165 {
 
 // File @openzeppelin/contracts/token/ERC721/IERC721Receiver.sol@v4.2.0
 
+
 pragma solidity ^0.8.0;
 
 /**
@@ -200,6 +202,7 @@ interface IERC721Receiver {
 
 // File @openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol@v4.2.0
 
+
 pragma solidity ^0.8.0;
 
 /**
@@ -225,6 +228,7 @@ interface IERC721Metadata is IERC721 {
 
 
 // File @openzeppelin/contracts/utils/Address.sol@v4.2.0
+
 
 pragma solidity ^0.8.0;
 
@@ -438,6 +442,7 @@ library Address {
 
 // File @openzeppelin/contracts/utils/Context.sol@v4.2.0
 
+
 pragma solidity ^0.8.0;
 
 /*
@@ -462,6 +467,7 @@ abstract contract Context {
 
 
 // File @openzeppelin/contracts/utils/Strings.sol@v4.2.0
+
 
 pragma solidity ^0.8.0;
 
@@ -531,6 +537,7 @@ library Strings {
 
 // File @openzeppelin/contracts/utils/introspection/ERC165.sol@v4.2.0
 
+
 pragma solidity ^0.8.0;
 
 /**
@@ -558,6 +565,7 @@ abstract contract ERC165 is IERC165 {
 
 
 // File @openzeppelin/contracts/token/ERC721/ERC721.sol@v4.2.0
+
 
 pragma solidity ^0.8.0;
 
@@ -970,6 +978,7 @@ contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
 
 // File @openzeppelin/contracts/token/ERC721/extensions/IERC721Enumerable.sol@v4.2.0
 
+
 pragma solidity ^0.8.0;
 
 /**
@@ -997,6 +1006,7 @@ interface IERC721Enumerable is IERC721 {
 
 
 // File @openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol@v4.2.0
+
 
 pragma solidity ^0.8.0;
 
@@ -1160,6 +1170,7 @@ abstract contract ERC721Enumerable is ERC721, IERC721Enumerable {
 
 // File @openzeppelin/contracts/access/Ownable.sol@v4.2.0
 
+
 pragma solidity ^0.8.0;
 
 /**
@@ -1230,6 +1241,7 @@ abstract contract Ownable is Context {
 
 
 // File @openzeppelin/contracts/utils/math/SafeMath.sol@v4.2.0
+
 
 pragma solidity ^0.8.0;
 
@@ -1457,7 +1469,8 @@ library SafeMath {
 }
 
 
-// File contracts/common/meta-transactions/ContentMixin.sol
+// File contracts/ERC721/common/meta-transactions/ContentMixin.sol
+
 
 pragma solidity ^0.8.0;
 
@@ -1485,7 +1498,8 @@ abstract contract ContextMixin {
 }
 
 
-// File contracts/common/meta-transactions/Initializable.sol
+// File contracts/ERC721/common/meta-transactions/Initializable.sol
+
 
 pragma solidity ^0.8.0;
 
@@ -1500,7 +1514,8 @@ contract Initializable {
 }
 
 
-// File contracts/common/meta-transactions/EIP712Base.sol
+// File contracts/ERC721/common/meta-transactions/EIP712Base.sol
+
 
 pragma solidity ^0.8.0;
 
@@ -1577,7 +1592,8 @@ contract EIP712Base is Initializable {
 }
 
 
-// File contracts/common/meta-transactions/NativeMetaTransaction.sol
+// File contracts/ERC721/common/meta-transactions/NativeMetaTransaction.sol
+
 
 pragma solidity ^0.8.0;
 
@@ -1683,7 +1699,8 @@ contract NativeMetaTransaction is EIP712Base {
 }
 
 
-// File contracts/ERC721Tradeable.sol
+// File contracts/ERC721/ERC721Tradeable.sol
+
 
 pragma solidity ^0.8.0;
 
@@ -1720,26 +1737,26 @@ abstract contract ERC721Tradeable is ContextMixin, ERC721Enumerable, NativeMetaT
      * @dev Mints a token to an address with a tokenURI.
      * @param _to address of the future owner of the token
      */
-    function mintTo(address _to) public onlyOwner {
-        uint256 newTokenId = _getNextTokenId();
-        _mint(_to, newTokenId);
-        _incrementTokenId();
-    }
+    // function mintTo(address _to) public onlyOwner {
+    //     uint256 newTokenId = _getNextTokenId();
+    //     _mint(_to, newTokenId);
+    //     _incrementTokenId();
+    // }
 
     /**
      * @dev calculates the next token ID based on value of _currentTokenId
      * @return uint256 for the next token ID
      */
-    function _getNextTokenId() private view returns (uint256) {
-        return _currentTokenId.add(1);
-    }
+    // function _getNextTokenId() virtual private view returns (uint256) {
+    //     return _currentTokenId.add(1);
+    // }
 
-    /**
-     * @dev increments the value of _currentTokenId
-     */
-    function _incrementTokenId() private {
-        _currentTokenId++;
-    }
+    // /**
+    //  * @dev increments the value of _currentTokenId
+    //  */
+    // function _incrementTokenId() virtual private {
+    //     _currentTokenId++;
+    // }
 
     function baseTokenURI() virtual public pure returns (string memory);
 
@@ -1766,37 +1783,319 @@ abstract contract ERC721Tradeable is ContextMixin, ERC721Enumerable, NativeMetaT
         return super.isApprovedForAll(owner, operator);
     }
 
+}
+
+
+// File @openzeppelin/contracts/access/AccessControl.sol@v4.2.0
+
+
+pragma solidity ^0.8.0;
+
+
+
+/**
+ * @dev External interface of AccessControl declared to support ERC165 detection.
+ */
+interface IAccessControl {
+    function hasRole(bytes32 role, address account) external view returns (bool);
+
+    function getRoleAdmin(bytes32 role) external view returns (bytes32);
+
+    function grantRole(bytes32 role, address account) external;
+
+    function revokeRole(bytes32 role, address account) external;
+
+    function renounceRole(bytes32 role, address account) external;
+}
+
+/**
+ * @dev Contract module that allows children to implement role-based access
+ * control mechanisms. This is a lightweight version that doesn't allow enumerating role
+ * members except through off-chain means by accessing the contract event logs. Some
+ * applications may benefit from on-chain enumerability, for those cases see
+ * {AccessControlEnumerable}.
+ *
+ * Roles are referred to by their `bytes32` identifier. These should be exposed
+ * in the external API and be unique. The best way to achieve this is by
+ * using `public constant` hash digests:
+ *
+ * ```
+ * bytes32 public constant MY_ROLE = keccak256("MY_ROLE");
+ * ```
+ *
+ * Roles can be used to represent a set of permissions. To restrict access to a
+ * function call, use {hasRole}:
+ *
+ * ```
+ * function foo() public {
+ *     require(hasRole(MY_ROLE, msg.sender));
+ *     ...
+ * }
+ * ```
+ *
+ * Roles can be granted and revoked dynamically via the {grantRole} and
+ * {revokeRole} functions. Each role has an associated admin role, and only
+ * accounts that have a role's admin role can call {grantRole} and {revokeRole}.
+ *
+ * By default, the admin role for all roles is `DEFAULT_ADMIN_ROLE`, which means
+ * that only accounts with this role will be able to grant or revoke other
+ * roles. More complex role relationships can be created by using
+ * {_setRoleAdmin}.
+ *
+ * WARNING: The `DEFAULT_ADMIN_ROLE` is also its own admin: it has permission to
+ * grant and revoke this role. Extra precautions should be taken to secure
+ * accounts that have been granted it.
+ */
+abstract contract AccessControl is Context, IAccessControl, ERC165 {
+    struct RoleData {
+        mapping(address => bool) members;
+        bytes32 adminRole;
+    }
+
+    mapping(bytes32 => RoleData) private _roles;
+
+    bytes32 public constant DEFAULT_ADMIN_ROLE = 0x00;
+
     /**
-     * This is used instead of msg.sender as transactions won't be sent by the original token owner, but by OpenSea.
+     * @dev Emitted when `newAdminRole` is set as ``role``'s admin role, replacing `previousAdminRole`
+     *
+     * `DEFAULT_ADMIN_ROLE` is the starting admin for all roles, despite
+     * {RoleAdminChanged} not being emitted signaling this.
+     *
+     * _Available since v3.1._
      */
-    function _msgSender()
-        internal
-        override
-        view
-        returns (address sender)
-    {
-        return ContextMixin.msgSender();
+    event RoleAdminChanged(bytes32 indexed role, bytes32 indexed previousAdminRole, bytes32 indexed newAdminRole);
+
+    /**
+     * @dev Emitted when `account` is granted `role`.
+     *
+     * `sender` is the account that originated the contract call, an admin role
+     * bearer except when using {_setupRole}.
+     */
+    event RoleGranted(bytes32 indexed role, address indexed account, address indexed sender);
+
+    /**
+     * @dev Emitted when `account` is revoked `role`.
+     *
+     * `sender` is the account that originated the contract call:
+     *   - if using `revokeRole`, it is the admin role bearer
+     *   - if using `renounceRole`, it is the role bearer (i.e. `account`)
+     */
+    event RoleRevoked(bytes32 indexed role, address indexed account, address indexed sender);
+
+    /**
+     * @dev Modifier that checks that an account has a specific role. Reverts
+     * with a standardized message including the required role.
+     *
+     * The format of the revert reason is given by the following regular expression:
+     *
+     *  /^AccessControl: account (0x[0-9a-f]{20}) is missing role (0x[0-9a-f]{32})$/
+     *
+     * _Available since v4.1._
+     */
+    modifier onlyRole(bytes32 role) {
+        _checkRole(role, _msgSender());
+        _;
+    }
+
+    /**
+     * @dev See {IERC165-supportsInterface}.
+     */
+    function supportsInterface(bytes4 interfaceId) public view virtual override returns (bool) {
+        return interfaceId == type(IAccessControl).interfaceId || super.supportsInterface(interfaceId);
+    }
+
+    /**
+     * @dev Returns `true` if `account` has been granted `role`.
+     */
+    function hasRole(bytes32 role, address account) public view override returns (bool) {
+        return _roles[role].members[account];
+    }
+
+    /**
+     * @dev Revert with a standard message if `account` is missing `role`.
+     *
+     * The format of the revert reason is given by the following regular expression:
+     *
+     *  /^AccessControl: account (0x[0-9a-f]{20}) is missing role (0x[0-9a-f]{32})$/
+     */
+    function _checkRole(bytes32 role, address account) internal view {
+        if (!hasRole(role, account)) {
+            revert(
+                string(
+                    abi.encodePacked(
+                        "AccessControl: account ",
+                        Strings.toHexString(uint160(account), 20),
+                        " is missing role ",
+                        Strings.toHexString(uint256(role), 32)
+                    )
+                )
+            );
+        }
+    }
+
+    /**
+     * @dev Returns the admin role that controls `role`. See {grantRole} and
+     * {revokeRole}.
+     *
+     * To change a role's admin, use {_setRoleAdmin}.
+     */
+    function getRoleAdmin(bytes32 role) public view override returns (bytes32) {
+        return _roles[role].adminRole;
+    }
+
+    /**
+     * @dev Grants `role` to `account`.
+     *
+     * If `account` had not been already granted `role`, emits a {RoleGranted}
+     * event.
+     *
+     * Requirements:
+     *
+     * - the caller must have ``role``'s admin role.
+     */
+    function grantRole(bytes32 role, address account) public virtual override onlyRole(getRoleAdmin(role)) {
+        _grantRole(role, account);
+    }
+
+    /**
+     * @dev Revokes `role` from `account`.
+     *
+     * If `account` had been granted `role`, emits a {RoleRevoked} event.
+     *
+     * Requirements:
+     *
+     * - the caller must have ``role``'s admin role.
+     */
+    function revokeRole(bytes32 role, address account) public virtual override onlyRole(getRoleAdmin(role)) {
+        _revokeRole(role, account);
+    }
+
+    /**
+     * @dev Revokes `role` from the calling account.
+     *
+     * Roles are often managed via {grantRole} and {revokeRole}: this function's
+     * purpose is to provide a mechanism for accounts to lose their privileges
+     * if they are compromised (such as when a trusted device is misplaced).
+     *
+     * If the calling account had been granted `role`, emits a {RoleRevoked}
+     * event.
+     *
+     * Requirements:
+     *
+     * - the caller must be `account`.
+     */
+    function renounceRole(bytes32 role, address account) public virtual override {
+        require(account == _msgSender(), "AccessControl: can only renounce roles for self");
+
+        _revokeRole(role, account);
+    }
+
+    /**
+     * @dev Grants `role` to `account`.
+     *
+     * If `account` had not been already granted `role`, emits a {RoleGranted}
+     * event. Note that unlike {grantRole}, this function doesn't perform any
+     * checks on the calling account.
+     *
+     * [WARNING]
+     * ====
+     * This function should only be called from the constructor when setting
+     * up the initial roles for the system.
+     *
+     * Using this function in any other way is effectively circumventing the admin
+     * system imposed by {AccessControl}.
+     * ====
+     */
+    function _setupRole(bytes32 role, address account) internal virtual {
+        _grantRole(role, account);
+    }
+
+    /**
+     * @dev Sets `adminRole` as ``role``'s admin role.
+     *
+     * Emits a {RoleAdminChanged} event.
+     */
+    function _setRoleAdmin(bytes32 role, bytes32 adminRole) internal virtual {
+        emit RoleAdminChanged(role, getRoleAdmin(role), adminRole);
+        _roles[role].adminRole = adminRole;
+    }
+
+    function _grantRole(bytes32 role, address account) private {
+        if (!hasRole(role, account)) {
+            _roles[role].members[account] = true;
+            emit RoleGranted(role, account, _msgSender());
+        }
+    }
+
+    function _revokeRole(bytes32 role, address account) private {
+        if (hasRole(role, account)) {
+            _roles[role].members[account] = false;
+            emit RoleRevoked(role, account, _msgSender());
+        }
     }
 }
 
 
-// File contracts/ChildCreature4.sol
+// File contracts/ERC721/common/AccessControlMixin.sol
+
 
 pragma solidity ^0.8.0;
+
+contract AccessControlMixin is AccessControl {
+    string private _revertMsg;
+    function _setupContractId(string memory contractId) internal {
+        _revertMsg = string(abi.encodePacked(contractId, ": INSUFFICIENT_PERMISSIONS"));
+    }
+
+    modifier only(bytes32 role) {
+        require(
+            hasRole(role, _msgSender()),
+            _revertMsg
+        );
+        _;
+    }
+}
+
+
+// File contracts/ERC721/ChildCreature4.sol
+
+
+pragma solidity ^0.8.0;
+
+
 
 /**
  * @title Creature
  * Creature - a contract for my non-fungible creatures.
  */
-contract FlatChildCreature4 is ERC721Tradeable {
+contract FlatChildCreature4 is ERC721Tradeable,AccessControlMixin {
+    using SafeMath for uint256;
+    bytes32 public constant DEPOSITOR_ROLE = keccak256("DEPOSITOR_ROLE");
+    uint256 private _currentTokenId = 0;
+
     constructor(address _proxyRegistryAddress)
         ERC721Tradeable("DCreature4", "DOSC4", _proxyRegistryAddress)
-    {}
+    {
+        /**
+        * Setting up permissions for admin role and ChildchainManager proxy 
+        */
+        _setupRole(DEFAULT_ADMIN_ROLE, _msgSender());
+        _setupRole(DEPOSITOR_ROLE, 0xb5505a6d998549090530911180f38aC5130101c6);
+    }
     /**
      * Events for the burning 
      */
     event WithdrawnBatch(address indexed user, uint256[] tokenIds);
     event TransferWithMetadata(address indexed from, address indexed to, uint256 indexed tokenId, bytes metaData);
+
+        
+    /**
+     * @dev See {IERC165-supportsInterface}.
+     */
+    function supportsInterface(bytes4 interfaceId) public view virtual override(ERC721Enumerable, AccessControl) returns (bool) {
+        return interfaceId == type(ERC721Tradeable).interfaceId || super.supportsInterface(interfaceId);
+    }
 
     /**
      * @notice called when user wants to withdraw token back to root chain
@@ -1824,6 +2123,7 @@ contract FlatChildCreature4 is ERC721Tradeable {
      */
     function deposit(address user, bytes calldata depositData)
         external
+        only(DEPOSITOR_ROLE)
     {
         /**
         * Making contract only callable by ChildChainManager
@@ -1847,7 +2147,6 @@ contract FlatChildCreature4 is ERC721Tradeable {
         }
 
     }
-    bytes32 public constant DEPOSITOR_ROLE = keccak256("DEPOSITOR_ROLE");
 
     /**
     * Opensea URI's
@@ -1908,6 +2207,31 @@ contract FlatChildCreature4 is ERC721Tradeable {
         }
         
         return ERC721.isApprovedForAll(_owner, _operator);
+    }
+
+    /**
+     * @dev calculates the next token ID based on value of _currentTokenId
+     * @return uint256 for the next token ID
+     */
+    function _getNextTokenId() private view  returns (uint256) {
+        return _currentTokenId.add(1);
+    }
+
+    /**
+     * @dev increments the value of _currentTokenId
+     */
+    function _incrementTokenId() private {
+        _currentTokenId++;
+    }
+    
+    /**
+     * @dev Mints a token to an address with a tokenURI.
+     * @param _to address of the future owner of the token
+     */
+    function mintTo(address _to) public onlyOwner {
+        uint256 newTokenId = _getNextTokenId();
+        _mint(_to, newTokenId);
+        _incrementTokenId();
     }
 
 

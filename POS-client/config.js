@@ -6,7 +6,13 @@ module.exports = {
     RPC: 'https://goerli.infura.io/v3/8173bc023d8f45e595df4f3fb55db36e',
     POSRootChainManager: '0xBbD7cBFA79faee899Eaf900F13C9065bF03B1A74',
     DERC20: '0x655F2166b0709cd575202630952D71E2bB0d61Af',
-    DERC721: '0x084297B12F204Adb74c689be08302FA3f12dB8A7',
+    /**
+     * Contract Address of the  ERC721 token
+     */
+    DERC721: '0xa5b5396841A6a5fDd8965Bb063df4b5E2b2F9399',
+    /****************************************/
+    /****************************************/
+    /****************************************/
     DERC1155: '0x2e3Ef7931F2d0e4a7da3dea950FF3F19269d9063',
     posERC20Predicate: '0xdD6596F2029e6233DEFfaCa316e6A95217d4Dc34',
     posERC721Predicate: '0x74D83801586E9D3C4dc45FfCD30B54eA9C88cf9b',
@@ -25,7 +31,10 @@ module.exports = {
     address: process.env.MAIN_ADDRESS,
     amount: '600000000000000000', // 0.5
     amount2: '7000000000000000', // 0.007
-    tokenId: '1234',
+    /**
+     * Select the token's Id for trading the ERC721
+     */
+    tokenId: '3',
     tokenId2: '6789',
   },
 };

@@ -12,7 +12,7 @@ async function main() {
    * Owner of the nft and contract addresses
    */
   const WALLET_ADDRESS = '0x7e693A3E0132Fa9D24B883979d4e405A64D67361';
-  const CONTRACT_ADDRESS = '0xfBb8a6edCF3EBDaF5a138E2750709df44D1C73d9';
+  const CONTRACT_ADDRESS = '0x671CE7356ED2DbCb33e31AA0a36CC5ff421B6c71';
 
   /**
    * Returns a new instance of the Contract attached to a new address
@@ -23,7 +23,9 @@ async function main() {
    * Minting a new NFT
    */
   const txResult = await contract.mintTo(WALLET_ADDRESS);
-  console.log('Tx Result:', txResult);
+  console.log('Tx1 Result:', txResult);
+  const txResult2 = await contract.owner();
+  console.log('Tx2 Result:', txResult2);
 }
 main()
   .then(() => process.exit(0))
