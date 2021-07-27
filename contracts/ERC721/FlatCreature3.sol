@@ -1808,7 +1808,7 @@ pragma solidity ^0.8.0;
  */
 contract FlatCreature3 is ERC721Tradeable {
     constructor(address _proxyRegistryAddress)
-        ERC721Tradeable("Creature3", "OSC3", _proxyRegistryAddress)
+        ERC721Tradeable("DLINECREATURE3", "DLC3", _proxyRegistryAddress)
     {}
 
     function baseTokenURI() override public pure returns (string memory) {

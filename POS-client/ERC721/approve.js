@@ -6,7 +6,8 @@ const execute = async () => {
   try {
     const tx = await maticPOSClient.approveERC721ForDeposit(
       config.root.DERC721,
-      config.user.tokenId
+      config.user.tokenId,
+      config.maticDefaultOptions
     );
     console.log(tx.transactionHash); // eslint-disable-line
   } catch (e) {

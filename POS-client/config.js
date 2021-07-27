@@ -9,7 +9,7 @@ module.exports = {
     /**
      * Contract Address of the  ERC721 token inside Goerli
      */
-    DERC721: '0x5a3c29A5F8ed04E2FD22BEd25a4b353Ff28c96b8',
+    DERC721: '0x344cA19326cbF0D753f311E57d88E38c7eE57b36',
     /****************************************/
     /****************************************/
     /****************************************/
@@ -25,7 +25,7 @@ module.exports = {
     /**
      * Contract Address of the  ERC721 token inside Mumbai
      */
-    DERC721: '0x671CE7356ED2DbCb33e31AA0a36CC5ff421B6c71',
+    DERC721: '0x746e69EFCED6F8594740D54C9A3766224C9929c7',
     /****************************************/
     /****************************************/
     /****************************************/
@@ -40,7 +40,7 @@ module.exports = {
     /**
      * Select the token's Id for trading the ERC721
      */
-    tokenId: '1',
+    tokenId: 1,
     tokenId2: '6789',
   },
 };
