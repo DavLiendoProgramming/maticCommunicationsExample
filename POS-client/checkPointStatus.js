@@ -9,8 +9,8 @@ const web3 = new Web3(provider);
 
 // Sign up for a free dedicated RPC URL at https://rpc.maticvigil.com/ or other hosted node providers.
 const chil_provider = new Web3.providers.HttpProvider(
-    'https://rpc-mumbai.matic.today'
-    );
+  'https://rpc-mumbai.matic.today'
+);
 const child_web3 = new Web3(chil_provider);
 
 // txHash - transaction hash on Matic
@@ -48,7 +48,7 @@ async function checkInclusion(txHash, rootChainAddress) {
 // Param1 - Burn transaction hash on child chain
 // Param2 - RootChainProxy Address on root chain (0x86E4Dc95c7FBdBf52e33D563BbDB00823894C287 for mainnet)
 checkInclusion(
-  '0xc19d47d13d1ff3d6f9c2bb01341245703d9434d334c969f9973a337016e2e2a0',
+  '0xc2ec17858b0390ae83e638221fc6c3596cefcaaccb1825d9ef7d0f6d4821ac54',
   '0x2890ba17efe978480615e330ecb65333b880928e'
 )
   .then((res) => {
