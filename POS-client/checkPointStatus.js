@@ -48,7 +48,7 @@ async function checkInclusion(txHash, rootChainAddress) {
 // Param1 - Burn transaction hash on child chain
 // Param2 - RootChainProxy Address on root chain (0x86E4Dc95c7FBdBf52e33D563BbDB00823894C287 for mainnet)
 checkInclusion(
-  '0xc2ec17858b0390ae83e638221fc6c3596cefcaaccb1825d9ef7d0f6d4821ac54',
+  '0x74f76deb1e73d9f5b08b16ad4b7732fbcf4229ec572002d30779782b1ce2f17a',
   '0x2890ba17efe978480615e330ecb65333b880928e'
 )
   .then((res) => {

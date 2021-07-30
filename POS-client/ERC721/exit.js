@@ -2,7 +2,7 @@ const utils = require('../utils');
 const maticPOSClient = utils.getMaticPOSClient();
 
 const burnHash =
-  '0xc19d47d13d1ff3d6f9c2bb01341245703d9434d334c969f9973a337016e2e2a0';
+  '0x74f76deb1e73d9f5b08b16ad4b7732fbcf4229ec572002d30779782b1ce2f17a';
 
 const execute = async () => {
   try {

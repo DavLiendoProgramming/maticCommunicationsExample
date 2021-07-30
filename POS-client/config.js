@@ -23,11 +23,11 @@ module.exports = {
     /**
      * Contract Address of the  ERC721 token inside Goerli
      */
-    DERC721: '0x344cA19326cbF0D753f311E57d88E38c7eE57b36',
+    DERC721: '0x7a5A62E3Fd0038D94FFD31e428a43d236970eDdc',
     /****************************************/
 
     DERC1155: '0x2e3Ef7931F2d0e4a7da3dea950FF3F19269d9063',
-    posERC20Predicate: '0xdD6596F2029e6233DEFfaCa316e6A95217d4Dc34',
+    posERC20Predicate: '0x56E14C4C1748a818a5564D33cF774c59EB3eDF59',
 
     /**
      * Predicate contracts
@@ -44,7 +44,7 @@ module.exports = {
     /**
      * Contract Address of the  ERC721 token inside Mumbai
      */
-    DERC721: '0x746e69EFCED6F8594740D54C9A3766224C9929c7',
+    DERC721: '0xA21fDf59B074EA0687Eb283ac8AA59827E0B8337',
     /****************************************/
 
     DERC1155: '0xA07e45A987F19E25176c877d98388878622623FA',
@@ -58,7 +58,7 @@ module.exports = {
     /**
      * Select the token's Id for trading the ERC721
      */
-    tokenId: '6',
+    tokenId: '1',
     tokenId2: '6789',
   },
 };

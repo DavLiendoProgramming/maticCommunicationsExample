@@ -62,6 +62,6 @@ module.exports = {
    * Using hardhat-etherscan plugin for veryfying introduce key for polygon or eth nets
    */
   etherscan: {
-    apiKey: process.env.ETHERSCAN_KEY,
+    apiKey: process.env.POLYGON_KEY,
   },
 };

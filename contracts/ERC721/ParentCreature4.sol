@@ -117,5 +117,12 @@ contract ParentCreature4 is ERC721Tradeable, AccessControlMixin {
         return ERC721.isApprovedForAll(_owner, _operator);
     }
 
-
+    /**
+     * @notice check if token already exists, return true if it does exist
+     * @dev this check will be used by the predicate to determine if the token needs to be minted or transfered
+     * @param tokenId tokenId being checked
+     */
+    function exists(uint256 tokenId) external view returns (bool) {
+        return _exists(tokenId);
+    }
 }
